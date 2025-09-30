@@ -1,202 +1,223 @@
-# Exa MCP Server 🔍
-[![npm version](https://badge.fury.io/js/exa-mcp-server.svg)](https://www.npmjs.com/package/exa-mcp-server)
-[![smithery badge](https://smithery.ai/badge/exa)](https://smithery.ai/server/exa)
+# Y Combinator Startup Validator MCP Server 🚀
 
-A Model Context Protocol (MCP) server lets AI assistants like Claude use the Exa AI Search API for web searches. This setup allows AI models to get real-time web information in a safe and controlled way.
+[![npm version](https://badge.fury.io/js/yc-startup-validator-mcp.svg)](https://www.npmjs.com/package/yc-startup-validator-mcp)
 
-## Remote Exa MCP 🌐
+A Model Context Protocol (MCP) server that provides startup validation feedback from YC legends and comprehensive validation workflows. Get insights from the minds of Paul Graham, Garry Tan, Jessica Livingston, and other Y Combinator icons.
 
-Connect directly to Exa's hosted MCP server (instead of running it locally).
+## ✨ Features
 
-### Remote Exa MCP URL
+### 🧠 "Ask A God" Toolset
+Get personalized startup feedback from YC legends:
+- **Paul Graham**: Essay-style deep thinking, contrarian insights, user love focus
+- **Garry Tan**: Growth metrics, product-market fit, scalability assessment  
+- **Jessica Livingston**: Team dynamics, founder resilience, startup psychology
+- **Sam Altman**: Vision, execution, market timing analysis
+- **Michael Seibel**: Product development, user feedback loops, practical building
+- **Dalton Caldwell**: Technical feasibility, platform risk, defensibility
+- **Peter Thiel**: Monopoly potential, 10x improvement, contrarian truth discovery
 
+### 📊 YC Validation Workflows
+Research-backed validation processes:
+- **YC Idea Validator & Refinement Engine**: Complete YC application preparation
+- **10x Better Framework**: Assess if your solution is truly 10x better
+- **Technology Architecture Decision Engine**: Make high-quality technical specifications
+- **Market Entry Intelligence**: Comprehensive market analysis
+- **Competitive Analysis & Strategy**: Deep competitive landscape research
+
+### 🔍 Powered by Exa AI
+All evaluations are backed by real-time research using Exa's search capabilities for the most current insights and data.
+
+## 🚀 Quick Start
+
+### NPM Installation
+
+```bash
+npm install -g yc-startup-validator-mcp
 ```
-https://mcp.exa.ai/mcp?exaApiKey=your-exa-api-key
-```
 
-Replace `your-api-key-here` with your actual Exa API key from [dashboard.exa.ai/api-keys](https://dashboard.exa.ai/api-keys).
-
-### Claude Desktop Configuration for Remote MCP
+### Claude Desktop Configuration
 
 Add this to your Claude Desktop configuration file:
 
 ```json
 {
   "mcpServers": {
-    "exa": {
+    "yc-validator": {
       "command": "npx",
-      "args": [
-        "-y",
-        "mcp-remote",
-        "https://mcp.exa.ai/mcp?exaApiKey=your-exa-api-key"
-      ]
+      "args": ["-y", "yc-startup-validator-mcp"],
+      "env": {
+        "EXA_API_KEY": "your-exa-api-key-here"
+      }
     }
   }
 }
 ```
 
-### NPM Installation
+### Getting Your Exa API Key
 
-```bash
-npm install -g exa-mcp-server
+1. Visit [dashboard.exa.ai/api-keys](https://dashboard.exa.ai/api-keys)
+2. Sign up or log in to get your free API key
+3. Replace `your-exa-api-key-here` with your actual key
+
+## 🛠 Available Tools
+
+### 🧠 Ask A God Tool
+**Tool**: `ask_a_god`
+
+Get startup feedback from YC legends with their signature evaluation styles:
+
+```
+ask_a_god:
+  legend: paul_graham | garry_tan | jessica_livingston | sam_altman | michael_seibel | dalton_caldwell | peter_thiel
+  evaluation_type: idea_validation | market_analysis | founder_assessment | product_critique | business_model_review | pitch_deck_feedback
+  startup_description: "Your startup description here"
+  context: 
+    stage: idea | pre-seed | seed | series-a
+    industry: "Your industry"
+    team_size: number
+    current_metrics: "Optional metrics"
 ```
 
-### Using Smithery
-
-To install the Exa MCP server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/exa):
-
-```bash
-npx -y @smithery/cli install exa --client claude
+**Example Usage:**
+```
+Ask Paul Graham to validate my AI-powered fitness app idea for busy professionals
 ```
 
-## Configuration ⚙️
+### 📋 YC Validation Workflows (Resources)
+Access comprehensive validation processes:
 
-### 1. Configure Claude Desktop to recognize the Exa MCP server
+- **YC Idea Validator**: `guide://yc-idea-validator` - Complete YC application preparation workflow
+- **10x Better Framework**: `guide://10x-better-framework` - Assess breakthrough potential 
+- **Technology Architecture**: `guide://tech-architecture-decision` - Make technical decisions
+- **Market Entry Intelligence**: `guide://market-entry-intelligence` - Market analysis workflow
 
-You can find claude_desktop_config.json inside the settings of Claude Desktop app:
+## 🎯 Use Cases
 
-Open the Claude Desktop app and enable Developer Mode from the top-left menu bar. 
+### For Founders
+- **Validate startup ideas** with YC legend perspectives
+- **Prepare YC applications** using proven frameworks
+- **Get specific feedback** on pitch decks and business models
+- **Research competitive landscapes** with YC-style analysis
 
-Once enabled, open Settings (also from the top-left menu bar) and navigate to the Developer Option, where you'll find the Edit Config button. Clicking it will open the claude_desktop_config.json file, allowing you to make the necessary edits. 
+### For Investors
+- **Evaluate startups** using YC criteria and frameworks
+- **Assess 10x potential** with research-backed analysis
+- **Due diligence support** with comprehensive market research
 
-OR (if you want to open claude_desktop_config.json from terminal)
+### For Accelerators & VCs
+- **Standardize evaluation** using proven YC methods
+- **Train teams** on YC-style startup assessment
+- **Research portfolio companies** and competitive landscapes
+
+## 📖 Example Interactions
+
+### Get Paul Graham's Take
+```
+"What would Paul Graham think of my AI tutoring platform for K-12 students?"
+
+Response includes:
+- Paul's likely assessment and concerns
+- His signature probing questions
+- Focus on user love and fundamentals
+- Recommendations for next steps
+```
+
+### Validate 10x Potential
+```
+"Is my autonomous delivery drone solution truly 10x better?"
+
+Uses the 10x Better Framework to assess:
+- Comparison to current alternatives
+- Monopoly characteristics analysis
+- YC community consensus validation
+- Peter Thiel contrarian insights
+```
+
+### YC Application Prep
+```
+"Help me prepare my YC application for a fintech startup"
+
+Runs YC Idea Validator workflow:
+- Market timing analysis
+- Competitive landscape research
+- Founder-market fit assessment
+- Rapid validation experiments
+- Application optimization
+```
+
+## 🔧 Configuration
+
+### Claude Desktop Setup
 
 #### For macOS:
-
-1. Open your Claude Desktop configuration:
-
 ```bash
 code ~/Library/Application\ Support/Claude/claude_desktop_config.json
 ```
 
 #### For Windows:
-
-1. Open your Claude Desktop configuration:
-
 ```powershell
 code %APPDATA%\Claude\claude_desktop_config.json
 ```
 
-### 2. Add the Exa server configuration:
+Add the YC Validator configuration:
 
 ```json
 {
   "mcpServers": {
-    "exa": {
+    "yc-validator": {
       "command": "npx",
-      "args": ["-y", "exa-mcp-server"],
+      "args": ["-y", "yc-startup-validator-mcp"],
       "env": {
-        "EXA_API_KEY": "your-api-key-here"
+        "EXA_API_KEY": "your-exa-api-key-here"
       }
     }
   }
 }
 ```
 
-Replace `your-api-key-here` with your actual Exa API key from [dashboard.exa.ai/api-keys](https://dashboard.exa.ai/api-keys).
-
-### 3. Available Tools & Tool Selection
-
-The Exa MCP server includes the following tools, which can be enabled by adding the `--tools`:
-
-- **web_search_exa**: Performs real-time web searches with optimized results and content extraction.
-- **research_paper_search**: Specialized search focused on academic papers and research content.
-- **company_research**: Comprehensive company research tool that crawls company websites to gather detailed information about businesses.
-- **crawling**: Extracts content from specific URLs, useful for reading articles, PDFs, or any web page when you have the exact URL.
-- **competitor_finder**: Identifies competitors of a company by searching for businesses offering similar products or services.
-- **linkedin_search**: Search LinkedIn for companies and people using Exa AI. Simply include company names, person names, or specific LinkedIn URLs in your query.
-- **wikipedia_search_exa**: Search and retrieve information from Wikipedia articles on specific topics, giving you accurate, structured knowledge from the world's largest encyclopedia.
-- **github_search**: Search GitHub repositories using Exa AI - performs real-time searches on GitHub.com to find relevant repositories, issues, and GitHub accounts.
-
-You can choose which tools to enable by adding the `--tools` parameter to your Claude Desktop configuration:
-
-#### Specify which tools to enable:
-
-```json
-{
-  "mcpServers": {
-    "exa": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "exa-mcp-server",
-        "--tools=web_search_exa,research_paper_search,company_research,crawling,competitor_finder,linkedin_search,wikipedia_search_exa,github_search"
-      ],
-      "env": {
-        "EXA_API_KEY": "your-api-key-here"
-      }
-    }
-  }
-}
-```
-
-For enabling multiple tools, use a comma-separated list:
-
-```json
-{
-  "mcpServers": {
-    "exa": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "exa-mcp-server",
-        "--tools=web_search_exa,research_paper_search,company_research,crawling,competitor_finder,linkedin_search,wikipedia_search_exa,github_search"
-      ],
-      "env": {
-        "EXA_API_KEY": "your-api-key-here"
-      }
-    }
-  }
-}
-```
-
-If you don't specify any tools, all tools enabled by default will be used.
-
-### 4. Restart Claude Desktop
-
-For the changes to take effect:
-
-1. Completely quit Claude Desktop (not just close the window)
+### Restart Claude Desktop
+1. Completely quit Claude Desktop 
 2. Start Claude Desktop again
-3. Look for the icon to verify the Exa server is connected
+3. Look for the 🚀 icon to verify the server is connected
 
-## Using via NPX
+## 🏗 Development
 
-If you prefer to run the server directly, you can use npx:
-
+### Local Development
 ```bash
-# Run with all tools enabled by default
-npx exa-mcp-server
-
-# Enable specific tools only
-npx exa-mcp-server --tools=web_search_exa
-
-# Enable multiple tools
-npx exa-mcp-server --tools=web_search_exa,research_paper_search
-
-# List all available tools
-npx exa-mcp-server --list-tools
+git clone https://github.com/b-c-nims/yc-startup-validator-mcp.git
+cd yc-startup-validator-mcp
+npm install
+npm run dev
 ```
 
-## Troubleshooting 🔧
+### Building
+```bash
+npm run build        # Build for HTTP transport
+npm run build:stdio  # Build for STDIO transport
+```
 
-### Common Issues
+### Testing
+```bash
+npm run inspector    # Test with MCP inspector
+```
 
-1. **Server Not Found**
-   * Verify the npm link is correctly set up
-   * Check Claude Desktop configuration syntax (json file)
+## 🤝 Contributing
 
-2. **API Key Issues**
-   * Confirm your EXA_API_KEY is valid
-   * Check the EXA_API_KEY is correctly set in the Claude Desktop config
-   * Verify no spaces or quotes around the API key
+We welcome contributions! Please see our contributing guidelines for details.
 
-3. **Connection Issues**
-   * Restart Claude Desktop completely
-   * Check Claude Desktop logs:
+## 📜 License
 
-<br>
+MIT License - see LICENSE file for details.
+
+## 🙏 Acknowledgments
+
+- **Y Combinator** - For the incredible startup wisdom and frameworks
+- **Exa AI** - For powering our research capabilities  
+- **Claude Code** - For development assistance
+- **Clear Thought** - For advanced reasoning capabilities
 
 ---
 
-Built with ❤️ by team Exa
+**Get legendary startup advice. Validate with YC precision. Build something people want.** 🚀
+
+Built with ❤️ for the startup community

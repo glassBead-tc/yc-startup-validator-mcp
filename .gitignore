@@ -3,3 +3,6 @@ build/
 *.log
 .env*
 .smithery/
+# API Keys and Configs
+cc_mcp_config.json
+**/claude_code_mcp_config.json

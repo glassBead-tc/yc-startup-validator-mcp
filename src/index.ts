@@ -3,6 +3,11 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
 
 // Import tool implementations
+import { registerAskAGodTool } from "./tools/askAGod.js";
+import { registerUnifiedExaResearchTool } from "./tools/unifiedExaResearch.js";
+import { registerUserGuideResources } from "./resources/userGuides.js";
+
+// Legacy tools - kept for backwards compatibility but deprecated
 import { registerWebSearchTool } from "./tools/webSearch.js";
 import { registerResearchPaperSearchTool } from "./tools/researchPaperSearch.js";
 import { registerCompanyResearchTool } from "./tools/companyResearch.js";
@@ -11,26 +16,38 @@ import { registerCompetitorFinderTool } from "./tools/competitorFinder.js";
 import { registerLinkedInSearchTool } from "./tools/linkedInSearch.js";
 import { registerWikipediaSearchTool } from "./tools/wikipediaSearch.js";
 import { registerGithubSearchTool } from "./tools/githubSearch.js";
-import { registerUserGuideResources } from "./resources/userGuides.js";
+import { registerRedditSearchTool } from "./tools/redditSearch.js";
+import { registerYoutubeSearchTool } from "./tools/youtubeSearch.js";
+import { registerTiktokSearchTool } from "./tools/tiktokSearch.js";
+import { registerYoutubeVideoDetailsTool } from "./tools/youtubeVideoDetails.js";
 import { log } from "./utils/logger.js";
 
 // Configuration schema for the EXA API key and tool selection
 export const configSchema = z.object({
   exaApiKey: z.string().optional().describe("Exa AI API key for search operations"),
+  youtubeApiKey: z.string().optional().describe("YouTube Data API v3 key for video details operations"),
   enabledTools: z.array(z.string()).optional().describe("List of tools to enable (if not specified, all tools are enabled)"),
   debug: z.boolean().default(false).describe("Enable debug logging")
 });
 
 // Tool registry for managing available tools
 const availableTools = {
-  'web_search_exa': { name: 'Web Search (Exa)', description: 'Real-time web search using Exa AI', enabled: true },
-  'research_paper_search_exa': { name: 'Research Paper Search', description: 'Search academic papers and research', enabled: true },
-  'company_research_exa': { name: 'Company Research', description: 'Research companies and organizations', enabled: true },
-  'crawling_exa': { name: 'Web Crawling', description: 'Extract content from specific URLs', enabled: true },
-  'competitor_finder_exa': { name: 'Competitor Finder', description: 'Find business competitors', enabled: true },
-  'linkedin_search_exa': { name: 'LinkedIn Search', description: 'Search LinkedIn profiles and companies', enabled: true },
-  'wikipedia_search_exa': { name: 'Wikipedia Search', description: 'Search Wikipedia articles', enabled: true },
-  'github_search_exa': { name: 'GitHub Search', description: 'Search GitHub repositories and code', enabled: true }
+  'ask_a_god': { name: 'Ask A God', description: 'Get startup validation feedback from YC legends', enabled: true },
+  'exa_research': { name: 'Unified Exa Research', description: 'All-in-one research tool with web, company, GitHub, YouTube, Reddit operations', enabled: true },
+  
+  // Legacy individual tools - deprecated in favor of unified tool
+  'web_search_exa': { name: 'Web Search (Exa)', description: 'Real-time web search using Exa AI', enabled: false },
+  'research_paper_search_exa': { name: 'Research Paper Search', description: 'Search academic papers and research', enabled: false },
+  'company_research_exa': { name: 'Company Research', description: 'Research companies and organizations', enabled: false },
+  'crawling_exa': { name: 'Web Crawling', description: 'Extract content from specific URLs', enabled: false },
+  'competitor_finder_exa': { name: 'Competitor Finder', description: 'Find business competitors', enabled: false },
+  'linkedin_search_exa': { name: 'LinkedIn Search', description: 'Search LinkedIn profiles and companies', enabled: false },
+  'wikipedia_search_exa': { name: 'Wikipedia Search', description: 'Search Wikipedia articles', enabled: false },
+  'github_search_exa': { name: 'GitHub Search', description: 'Search GitHub repositories and code', enabled: false },
+  'reddit_search_exa': { name: 'Reddit Search', description: 'Search Reddit for discussions about websites or topics', enabled: false },
+  'youtube_search_exa': { name: 'YouTube Search', description: 'Search YouTube videos, channels, and playlists', enabled: false },
+  'tiktok_search_exa': { name: 'TikTok Search', description: 'Search TikTok for videos', enabled: false },
+  'youtube_video_details_exa': { name: 'YouTube Video Details', description: 'Get detailed information about YouTube videos', enabled: false }
 };
 
 /**
@@ -76,6 +93,18 @@ export default function ({ config }: { config: z.infer<typeof configSchema> }) {
     // Register tools based on configuration
     const registeredTools: string[] = [];
     
+    // Core tools - always register
+    if (shouldRegisterTool('ask_a_god')) {
+      registerAskAGodTool(server, config);
+      registeredTools.push('ask_a_god');
+    }
+    
+    if (shouldRegisterTool('exa_research')) {
+      registerUnifiedExaResearchTool(server, config);
+      registeredTools.push('exa_research');
+    }
+    
+    // Legacy tools - only register if explicitly enabled
     if (shouldRegisterTool('web_search_exa')) {
       registerWebSearchTool(server, config);
       registeredTools.push('web_search_exa');
@@ -114,6 +143,26 @@ export default function ({ config }: { config: z.infer<typeof configSchema> }) {
     if (shouldRegisterTool('github_search_exa')) {
       registerGithubSearchTool(server, config);
       registeredTools.push('github_search_exa');
+    }
+    
+    if (shouldRegisterTool('reddit_search_exa')) {
+      registerRedditSearchTool(server, config);
+      registeredTools.push('reddit_search_exa');
+    }
+    
+    if (shouldRegisterTool('youtube_search_exa')) {
+      registerYoutubeSearchTool(server, config);
+      registeredTools.push('youtube_search_exa');
+    }
+    
+    if (shouldRegisterTool('tiktok_search_exa')) {
+      registerTiktokSearchTool(server, config);
+      registeredTools.push('tiktok_search_exa');
+    }
+    
+    if (shouldRegisterTool('youtube_video_details_exa')) {
+      registerYoutubeVideoDetailsTool(server, config);
+      registeredTools.push('youtube_video_details_exa');
     }
     
     if (config.debug) {
