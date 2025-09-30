@@ -1,33 +1,35 @@
 {
-  "name": "exa-mcp-server",
-  "version": "2.0.0",
-  "description": "A Model Context Protocol server with Exa for web search, academic paper search, and Twitter/X.com search. Provides real-time web searches with configurable tool selection, allowing users to enable or disable specific search capabilities. Supports customizable result counts, live crawling options, and returns content from the most relevant websites.",
+  "name": "yc-startup-validator-mcp",
+  "version": "1.0.0",
+  "description": "Y Combinator Startup Validator MCP Server - Get startup validation feedback from YC legends like Paul Graham, Garry Tan, and Jessica Livingston. Features 'Ask Gods' toolset and comprehensive YC-style validation workflows with research-backed insights.",
   "type": "module",
   "module": "./src/index.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/exa-labs/exa-mcp-server.git"
+    "url": "git+https://github.com/b-c-nims/yc-startup-validator-mcp.git"
   },
   "bin": {
-    "exa-mcp-server": "./.smithery/index.cjs"
+    "yc-startup-validator": "./.smithery/index.cjs"
   },
   "files": [
     ".smithery"
   ],
   "keywords": [
     "mcp",
-    "search mcp",
+    "startup validator",
+    "y combinator",
+    "paul graham",
     "model context protocol",
-    "exa",
-    "search",
-    "websearch",
+    "startup validation",
+    "pitch feedback",
+    "ycombinator",
+    "startup advice",
+    "founder tools",
+    "entrepreneurship",
     "claude",
-    "ai",
-    "research",
-    "papers",
-    "linkedin"
+    "ai"
   ],
-  "author": "Exa Labs",
+  "author": "B.C. Nims",
   "scripts": {
     "build": "npm run build:shttp",
     "build:stdio": "npx @smithery/cli@latest build src/index.ts --transport stdio && echo '#!/usr/bin/env node' | cat - .smithery/index.cjs > temp && mv temp .smithery/index.cjs && chmod +x .smithery/index.cjs",
